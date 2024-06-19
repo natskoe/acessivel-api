@@ -1,4 +1,4 @@
-package com.acessival_api.acessivel_api.Model;
+package acessivel.entity;
 
 
 import lombok.Data;
