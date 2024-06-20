@@ -6,9 +6,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity(name = "Usuario")
 @Table(name = "usuario")
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "id_usuario")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -16,22 +18,24 @@ import lombok.*;
 public class Usuario {
 
     @Id
-    @Column(name = "ID")
-    private int id;
+    @Column(name = "id_usuario")
+    private int id_usuario;
 
-    @Column(name = "Senha")
-    private String senha;
-
-    @Column(name = "Nome")
+    @Column(name = "nome")
     private String nome;
 
-    @Column(name = "Sobrenome")
+    @Column(name = "sobrenome")
     private String sobrenome;
-
-    @Column(name = "email")
-    private String email;
 
     @Column(name = "cpf")
     private String cpf;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "senha")
+    private String senha;
+
+    @Column(name = "dataNascimento")
+    private Date dataNascimento;
 }

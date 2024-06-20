@@ -1,16 +1,26 @@
 package acessivel.entity;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Data
+
+@Entity(name = "Queixante")
+@Table(name = "queixante")
+@EqualsAndHashCode(of = "id_queixante")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Queixante extends Usuario{
+    @Id
+    @Column(name = "id_queixante")
+    private int id_queixante;
 
+    @Column(name = "cadPcd")
     private String cadPcd;
+
+    @ManyToOne()
     private Endereco endereco;
 
-    public Queixante(int id, String senha, String nome, String sobrenome, String email, String cpf, String cadPcd, Endereco endereco) {
-        super(id, senha, nome, sobrenome, email, cpf);
-        this.cadPcd = cadPcd;
-        this.endereco = endereco;
-    }
+
 }

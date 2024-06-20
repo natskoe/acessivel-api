@@ -1,9 +1,9 @@
 package acessivel.repository;
 
+import acessivel.entity.Queixante;
 import org.springframework.data.jpa.repository.JpaRepository;
-import acessivel.entity.Usuario;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface QueixanteRepository extends JpaRepository<Queixante, Long> {
 }

@@ -1,22 +1,24 @@
 package acessivel.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity(name = "Governo")
 @Table(name = "governo")
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "id_governo")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class Governo extends Usuario{
 
-    private String matricula;
+    @Id
+    @Column(name = "id_governo")
+    private int id_governo;
 
-    public Governo(int id, String senha, String nome, String sobrenome, String email, String cpf, String matricula) {
-        super(id, senha, nome, sobrenome, email, cpf);
-        this.matricula = matricula;
-    }
+    @Column(name = "matricula")
+    private String matricula;
 }
