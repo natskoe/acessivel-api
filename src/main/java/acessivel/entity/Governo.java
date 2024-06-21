@@ -6,13 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+@Data
 @Entity(name = "Governo")
 @Table(name = "governo")
 @EqualsAndHashCode(of = "id_governo")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class Governo extends Usuario{
 
     @Id

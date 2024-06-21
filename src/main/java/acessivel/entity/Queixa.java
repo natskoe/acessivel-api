@@ -1,15 +1,27 @@
 package acessivel.entity;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+@Entity(name = "Queixa")
+@Table(name = "queixa")
 @Data
+@EqualsAndHashCode(of = "id_usuario")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Queixa extends Solicitacao {
 
-    private String imagem_link;
+    @Id
+    @Column(name = "id_queixa")
+    private int id_queixa;
 
-    public Queixa(String titulo, String descricao, String local, Queixante queixante, boolean status, String imagemLink) {
-        super(titulo, descricao, local, queixante, status);
-        this.imagem_link = imagemLink;
-    }
+    @Column(name = "imagem_link")
+    private String imagem_link;
 }

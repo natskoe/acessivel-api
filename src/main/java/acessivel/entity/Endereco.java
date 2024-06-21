@@ -9,8 +9,6 @@ import lombok.*;
 @Data
 @Entity(name = "Endereco")
 @Table(name = "endereco")
-@Getter
-@Setter
 @EqualsAndHashCode(of = "id_endereco")
 @NoArgsConstructor
 @AllArgsConstructor
