@@ -1,6 +1,8 @@
 package acessivel.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.util.Date;
@@ -8,12 +10,8 @@ import java.util.Date;
 @EqualsAndHashCode(of = "id_usuario")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class Usuario {
-
-    @Column(name = "id_usuario")
-    private int id_usuario;
 
     @Column(name = "nome")
     private String nome;
@@ -32,4 +30,5 @@ public class Usuario {
 
     @Column(name = "dataNascimento")
     private Date dataNascimento;
+
 }

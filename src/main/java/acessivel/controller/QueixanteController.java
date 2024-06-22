@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/queixante")
 public class QueixanteController {
 
     private final QueixanteService queixanteService;
@@ -23,14 +23,14 @@ public class QueixanteController {
         this.queixanteService = queixanteService;
     }
 
-    @GetMapping
-    public ResponseEntity<?> getUsuarios(){
+    @GetMapping("/get")
+    public ResponseEntity<?> getQueixantes(){
         List<Queixante> listaQueixantes = queixanteService.getQueixantes();
         return new ResponseEntity<>(listaQueixantes, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<?> postUsuario(@RequestBody CriarQueixanteDTO data){
+    @PostMapping("/post")
+    public ResponseEntity<?> postQueixantes(@RequestBody CriarQueixanteDTO data){
         Queixante queixante = queixanteService.criarQueixante(data);
         return new ResponseEntity<>(queixante, HttpStatus.CREATED);
     }

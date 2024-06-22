@@ -22,5 +22,7 @@ public class Queixante extends Usuario{
     @ManyToOne()
     private Endereco endereco;
 
+//    @OneToOne()
+//    private Usuario usuario;
 
 }
