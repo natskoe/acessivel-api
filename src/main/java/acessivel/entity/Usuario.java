@@ -1,12 +1,12 @@
 package acessivel.entity;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 
 import java.util.Date;
 
+@MappedSuperclass
 @EqualsAndHashCode(of = "id_usuario")
 @NoArgsConstructor
 @AllArgsConstructor
