@@ -18,7 +18,7 @@ public class Queixante extends Usuario{
     private int id_queixante;
 
     @Column(name = "cad_pcd")
-    private String cad_pcd;
+    private String cadPcd;
 
     @ManyToOne()
     private Endereco endereco;

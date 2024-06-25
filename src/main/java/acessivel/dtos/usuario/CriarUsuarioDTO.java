@@ -1,5 +1,8 @@
 package acessivel.dtos.usuario;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.*;
 
 import java.util.Date;
@@ -14,5 +17,7 @@ public class CriarUsuarioDTO {
     private String cpf;
     private String email;
     private String senha;
+    @Basic
+    @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 }

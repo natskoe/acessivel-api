@@ -30,6 +30,6 @@ public class Usuario {
     @Column(name = "data_nascimento")
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date data_nascimento;
+    private Date dataNascimento;
 
 }
