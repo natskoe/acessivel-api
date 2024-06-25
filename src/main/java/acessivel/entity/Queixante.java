@@ -17,8 +17,8 @@ public class Queixante extends Usuario{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_queixante;
 
-    @Column(name = "cadPcd")
-    private String cadPcd;
+    @Column(name = "cad_pcd")
+    private String cad_pcd;
 
     @ManyToOne()
     private Endereco endereco;

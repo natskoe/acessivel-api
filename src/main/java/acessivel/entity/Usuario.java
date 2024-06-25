@@ -27,9 +27,9 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    @Column(name = "dataNascimento")
+    @Column(name = "data_nascimento")
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date dataNascimento;
+    private Date data_nascimento;
 
 }
