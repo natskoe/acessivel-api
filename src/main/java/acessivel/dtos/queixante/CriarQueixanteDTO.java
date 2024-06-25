@@ -2,13 +2,11 @@ package acessivel.dtos.queixante;
 
 import acessivel.dtos.usuario.CriarUsuarioDTO;
 import acessivel.entity.Endereco;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CriarQueixanteDTO extends CriarUsuarioDTO {
 
     private String cadPcd;

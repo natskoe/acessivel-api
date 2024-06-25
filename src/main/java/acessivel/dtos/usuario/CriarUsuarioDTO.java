@@ -1,17 +1,18 @@
 package acessivel.dtos.usuario;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Date;
 
 @Data
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CriarUsuarioDTO {
 
-    private String senha;
     private String nome;
     private String sobrenome;
-    private String email;
     private String cpf;
+    private String email;
+    private String senha;
+    private Date dataNascimento;
 }

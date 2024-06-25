@@ -6,7 +6,7 @@ import lombok.*;
 
 @Entity(name = "Queixante")
 @Table(name = "queixante")
-@EqualsAndHashCode(of = "id_queixante")
+//@EqualsAndHashCode(of = "id_queixante")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,6 +14,7 @@ import lombok.*;
 public class Queixante extends Usuario{
     @Id
     @Column(name = "id_queixante")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_queixante;
 
     @Column(name = "cadPcd")
@@ -21,8 +22,4 @@ public class Queixante extends Usuario{
 
     @ManyToOne()
     private Endereco endereco;
-
-//    @OneToOne()
-//    private Usuario usuario;
-
 }

@@ -1,13 +1,12 @@
 package acessivel.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.internal.log.SubSystemLogging;
 
 import java.util.Date;
 
 @MappedSuperclass
-@EqualsAndHashCode(of = "id_usuario")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -29,6 +28,8 @@ public class Usuario {
     private String senha;
 
     @Column(name = "dataNascimento")
+    @Basic
+    @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
 }
