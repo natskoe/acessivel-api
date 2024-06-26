@@ -13,6 +13,31 @@ public class QueixanteService {
     @Autowired
     private QueixanteRepository repository;
 
+    //Validação de CPF.
+    public Boolean validarCpf(String cpfQueixante) {
+
+        //Retira os caracteres não numéricos.
+        cpfQueixante = cpfQueixante.replaceAll("[^0-9]", "");
+
+        //Confere o tamanho do CPF.
+        if (cpfQueixante.length() != 11) {
+            return false;
+        }
+        if (cpfQueixante.matches("(\\d)\\1{10}")) {
+            return false;
+        }
+        try{
+            int soma = 0;
+            int peso = 10;
+
+            for (int i = 0; i < 9; i++) {
+                int digito = Integer.parseInt(cpfQueixante.substring(i, i + 1));
+                soma += digito;           }
+
+        }
+
+    }
+
     //Retornar todos os usuários.
     public List<Queixante> getQueixantes(){
         return repository.findAll();
