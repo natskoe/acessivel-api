@@ -67,6 +67,7 @@ public class QueixanteService {
         queixante.setEmail(data.getEmail());
         queixante.setCpf(data.getCpf());
         queixante.setCadPcd(data.getCadPcd());
+        queixante.setDataNascimento(data.getDataNascimento());
 
         repository.save(queixante);
         return queixante;
