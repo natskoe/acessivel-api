@@ -32,9 +32,23 @@ public class QueixanteService {
 
             for (int i = 0; i < 9; i++) {
                 int digito = Integer.parseInt(cpfQueixante.substring(i, i + 1));
-                soma += digito;           }
+                soma += digito * peso--;
+            }
 
-        }
+            int primeiroDigitoCheck = 11 - (soma % 11);
+            if (primeiroDigitoCheck >= 10) {
+                primeiroDigitoCheck = 0;
+            }
+
+            int segundoDigitoCheck = 11 - (soma % 11);
+            if (segundoDigitoCheck >= 10) {
+                segundoDigitoCheck = 0;
+            }
+
+            return cpfQueixante.endsWith("" + primeiroDigitoCheck + segundoDigitoCheck);
+        } catch (NumberFormatException e) {
+        return false;
+    }
 
     }
 
