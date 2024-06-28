@@ -36,5 +36,5 @@ public class CriarUsuarioDTO {
 
     @Basic
     @Temporal(TemporalType.DATE)
-    private LocalDate data_nascimento;
+    private LocalDate dataNascimento;
 }

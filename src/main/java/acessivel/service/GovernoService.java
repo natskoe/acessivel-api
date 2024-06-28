@@ -29,7 +29,7 @@ public class GovernoService {
         governo.setCpf(data.getCpf());
         governo.setEmail(data.getEmail());
         governo.setSenha(data.getSenha());
-        governo.setData_nascimento(data.getData_nascimento());
+        governo.setDataNascimento(data.getDataNascimento());
         governo.setMatricula(data.getMatricula());
 
         repository.save(governo);
