@@ -1,9 +1,6 @@
 package acessivel.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -16,6 +13,7 @@ public class Governo extends Usuario{
 
     @Id
     @Column(name = "id_governo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_governo;
 
     @Column(name = "matricula")

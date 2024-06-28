@@ -1,6 +1,6 @@
 package acessivel.controller;
 
-import acessivel.dtos.queixante.CriarQueixanteDTO;
+import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Queixante;
 import acessivel.service.QueixanteService;
 import org.springframework.http.HttpStatus;
@@ -20,12 +20,14 @@ public class QueixanteController {
     public QueixanteController(QueixanteService queixanteService) {
         this.queixanteService = queixanteService;
     }
+
     @CrossOrigin(origins = "*")
     @GetMapping("/get")
     public ResponseEntity<?> getQueixantes(){
         List<Queixante> listaQueixantes = queixanteService.getQueixantes();
         return new ResponseEntity<>(listaQueixantes, HttpStatus.OK);
     }
+
     @CrossOrigin(origins = "*")
     @PostMapping("/post")
     public ResponseEntity<?> postQueixantes(@RequestBody CriarQueixanteDTO data){

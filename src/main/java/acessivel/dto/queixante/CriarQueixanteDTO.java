@@ -1,6 +1,6 @@
 package acessivel.dto.queixante;
 
-import acessivel.dtos.usuario.CriarUsuarioDTO;
+import acessivel.dto.usuario.CriarUsuarioDTO;
 import acessivel.entity.Endereco;
 import lombok.*;
 
