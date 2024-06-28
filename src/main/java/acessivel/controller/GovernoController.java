@@ -3,6 +3,7 @@ package acessivel.controller;
 import acessivel.dto.governo.CriarGovernoDTO;
 import acessivel.entity.Governo;
 import acessivel.service.GovernoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class GovernoController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/post")
-    public ResponseEntity<?> postGoverno(@RequestBody CriarGovernoDTO data){
+    public ResponseEntity<?> postGoverno(@RequestBody @Valid CriarGovernoDTO data){
         Governo governo = governoService.criarGoverno(data);
         return new ResponseEntity<>(governo, HttpStatus.CREATED);
     }

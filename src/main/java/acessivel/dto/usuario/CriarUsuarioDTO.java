@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -34,5 +35,5 @@ public class CriarUsuarioDTO {
 
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date dataNascimento;
+    private LocalDate data_nascimento;
 }

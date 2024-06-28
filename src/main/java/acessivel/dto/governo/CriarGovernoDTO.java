@@ -1,6 +1,7 @@
 package acessivel.dto.governo;
 
-import acessivel.dto.queixante.CriarQueixanteDTO;
+import acessivel.dto.usuario.CriarUsuarioDTO;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CriarGovernoDTO extends CriarQueixanteDTO {
+public class CriarGovernoDTO extends CriarUsuarioDTO {
 
-    
+    @NotBlank(message = "Matrícula não pode estar vazia.")
     private String matricula;
 }

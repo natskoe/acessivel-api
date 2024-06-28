@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.internal.log.SubSystemLogging;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @MappedSuperclass
@@ -30,6 +31,6 @@ public class Usuario {
     @Column(name = "data_nascimento")
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date dataNascimento;
+    private LocalDate data_nascimento;
 
 }
