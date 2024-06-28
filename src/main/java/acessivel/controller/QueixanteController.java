@@ -21,6 +21,7 @@ public class QueixanteController {
     public QueixanteController(QueixanteService queixanteService) {
         this.queixanteService = queixanteService;
     }
+
     @CrossOrigin(origins = "*")
     @GetMapping("/get")
     public ResponseEntity<?> getQueixantes(){

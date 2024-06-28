@@ -51,13 +51,11 @@ public class QueixanteService {
     }
 
     }
-
     //Retornar todos os usuários.
     public List<Queixante> getQueixantes(){
         return repository.findAll();
     }
 
-    //Criar um usuário.
     public Queixante criarQueixante(CriarQueixanteDTO data) {
         Queixante queixante = new Queixante();
 
@@ -69,7 +67,12 @@ public class QueixanteService {
         queixante.setCadPcd(data.getCadPcd());
         queixante.setDataNascimento(data.getDataNascimento());
 
-        repository.save(queixante);
+        salvarQueixante(queixante);
         return queixante;
+    }
+
+    //Salvar usuário.
+    public void salvarQueixante(Queixante queixante) {
+        repository.save(queixante);
     }
 }

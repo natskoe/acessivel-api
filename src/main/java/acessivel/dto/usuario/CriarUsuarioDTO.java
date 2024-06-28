@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Date;
 
@@ -22,7 +23,8 @@ public class CriarUsuarioDTO {
     private String sobrenome;
 
     @NotBlank(message = "CPF não pode estar vazio.")
-    @Size(min = 11, max = 11)
+//    @Size(min = 11, max = 11)
+    @CPF
     private String cpf;
 
     @NotBlank(message = "Email não pode estar vazio.")
