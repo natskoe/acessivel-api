@@ -1,6 +1,6 @@
 package acessivel.controller;
 
-import acessivel.dtos.queixante.CriarQueixanteDTO;
+import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Queixante;
 import acessivel.service.QueixanteService;
 import org.springframework.http.HttpStatus;

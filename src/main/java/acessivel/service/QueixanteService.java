@@ -1,6 +1,6 @@
 package acessivel.service;
 
-import acessivel.dtos.queixante.CriarQueixanteDTO;
+import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Queixante;
 import acessivel.repository.QueixanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
