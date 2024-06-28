@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CriarGovernoDTO extends CriarQueixanteDTO {
 
+    
     private String matricula;
 }

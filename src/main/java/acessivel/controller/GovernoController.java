@@ -2,15 +2,12 @@ package acessivel.controller;
 
 import acessivel.dto.governo.CriarGovernoDTO;
 import acessivel.entity.Governo;
-import acessivel.entity.Queixante;
 import acessivel.service.GovernoService;
-import com.sun.net.httpserver.Headers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
