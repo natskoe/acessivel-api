@@ -3,6 +3,7 @@ package acessivel.controller;
 import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Queixante;
 import acessivel.service.QueixanteService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class QueixanteController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/post")
-    public ResponseEntity<?> postQueixantes(@RequestBody CriarQueixanteDTO data){
+    public ResponseEntity<?> postQueixantes(@RequestBody @Valid CriarQueixanteDTO data){
         Queixante queixante = queixanteService.criarQueixante(data);
         return new ResponseEntity<>(queixante, HttpStatus.CREATED);
     }
