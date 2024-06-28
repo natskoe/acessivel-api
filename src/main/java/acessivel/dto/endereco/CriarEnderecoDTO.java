@@ -1,4 +1,4 @@
-package acessivel.dtos.endereco;
+package acessivel.dto.endereco;
 
 import lombok.Data;
 import lombok.Getter;

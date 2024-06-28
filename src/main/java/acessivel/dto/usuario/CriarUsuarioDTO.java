@@ -1,4 +1,4 @@
-package acessivel.dtos.usuario;
+package acessivel.dto.usuario;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Temporal;

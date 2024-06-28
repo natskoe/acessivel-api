@@ -1,4 +1,4 @@
-package acessivel.dtos.queixante;
+package acessivel.dto.queixante;
 
 import acessivel.dtos.usuario.CriarUsuarioDTO;
 import acessivel.entity.Endereco;
