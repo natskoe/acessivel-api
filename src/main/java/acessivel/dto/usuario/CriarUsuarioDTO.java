@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -35,5 +36,5 @@ public class CriarUsuarioDTO {
 
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date dataNascimento;
+    private LocalDate data_nascimento;
 }

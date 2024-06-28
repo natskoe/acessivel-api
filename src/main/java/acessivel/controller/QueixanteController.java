@@ -28,6 +28,7 @@ public class QueixanteController {
         List<Queixante> listaQueixantes = queixanteService.getQueixantes();
         return new ResponseEntity<>(listaQueixantes, HttpStatus.OK);
     }
+
     @CrossOrigin(origins = "*")
     @PostMapping("/post")
     public ResponseEntity<?> postQueixantes(@RequestBody @Valid CriarQueixanteDTO data){
