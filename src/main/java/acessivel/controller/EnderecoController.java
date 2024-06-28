@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import acessivel.service.EnderecoService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
@@ -17,6 +19,13 @@ public class EnderecoController {
 
     @Autowired
     public EnderecoController(EnderecoService enderecoService) {this.enderecoService = enderecoService;}
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/get")
+    public ResponseEntity<?> getEnderecos(){
+        List<Endereco> listaEnderecos = enderecoService.getEnderecos();
+        return new ResponseEntity<>(listaEnderecos, HttpStatus.OK);
+    }
 
     @CrossOrigin(origins = "*")
     @PostMapping("/post")

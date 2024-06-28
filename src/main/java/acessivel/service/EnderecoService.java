@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import acessivel.repository.EnderecoRepository;
 
+import java.util.List;
+
 @Service
 public class EnderecoService {
 
@@ -14,6 +16,11 @@ public class EnderecoService {
 
     public void salvarEndereco(Endereco endereco){
         repository.save(endereco);
+    }
+
+    //Retornar todos os usuários.
+    public List<Endereco> getEnderecos(){
+        return repository.findAll();
     }
 
     public Endereco criarEndereco(CriarEnderecoDTO data) {

@@ -23,7 +23,6 @@ public class CriarUsuarioDTO {
     private String sobrenome;
 
     @NotBlank(message = "CPF não pode estar vazio.")
-//    @Size(min = 11, max = 11)
     @CPF
     private String cpf;
 
