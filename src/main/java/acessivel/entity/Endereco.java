@@ -36,6 +36,4 @@ public class Endereco {
     @Column(name = "estado")
     private String estado;
 
-    @OneToOne(mappedBy = "endereco")
-    private Queixante queixante;
 }

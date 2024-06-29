@@ -1,6 +1,5 @@
 package acessivel.service;
 
-import acessivel.dto.queixante.AtualizarEnderecoQueixanteDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Endereco;
 import acessivel.entity.Queixante;
@@ -12,8 +11,11 @@ import java.util.List;
 @Service
 public class QueixanteService {
 
-    @Autowired
     private QueixanteRepository repository;
+
+    public QueixanteService(QueixanteRepository repository) {
+        this.repository = repository;
+    }
 
     //Retornar todos os usuários.
     public List<Queixante> getQueixantes() {
@@ -47,14 +49,10 @@ public class QueixanteService {
     }
 
     //Vincular endereço ao queixante.
-    public Queixante patchQueixanteEndereco(AtualizarEnderecoQueixanteDTO data) {
-        Queixante queixante = repository.getReferenceById(data.getIdQueixante());
-
-        if (data.getEndereco() != null) {
-            queixante.setEndereco(data.getEndereco());
-        }
+    public void patchQueixanteEndereco(Long id, Endereco endereco) {
+        Queixante queixante = repository.getReferenceById(id);
+        queixante.setEndereco(endereco);
 
         repository.save(queixante);
-        return queixante;
     }
 }

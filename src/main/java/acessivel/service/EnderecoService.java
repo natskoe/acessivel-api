@@ -2,6 +2,8 @@ package acessivel.service;
 
 import acessivel.dto.endereco.CriarEnderecoDTO;
 import acessivel.entity.Endereco;
+import acessivel.entity.Queixante;
+import acessivel.repository.QueixanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import acessivel.repository.EnderecoRepository;
@@ -11,8 +13,13 @@ import java.util.List;
 @Service
 public class EnderecoService {
 
-    @Autowired
     private EnderecoRepository repository;
+    private QueixanteService queixanteService;
+
+    public EnderecoService(EnderecoRepository repository, QueixanteService queixanteService) {
+        this.repository = repository;
+        this.queixanteService = queixanteService;
+    }
 
     public Endereco salvarEndereco(Endereco endereco){
         Endereco enderecoSalvo = repository.save(endereco);
@@ -37,6 +44,11 @@ public class EnderecoService {
 
         Endereco enderecoSalvo = salvarEndereco(endereco);
         System.out.println("Endereço salvo: " + enderecoSalvo);
+
+        Long id_queixante = data.getId_queixante();
+
+        queixanteService.patchQueixanteEndereco(id_queixante, enderecoSalvo);
+
         return enderecoSalvo;
     }
 }
