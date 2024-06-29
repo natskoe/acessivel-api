@@ -1,6 +1,8 @@
 package acessivel.controller;
 
+import acessivel.dto.queixante.AtualizarEnderecoQueixanteDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
+import acessivel.dto.endereco.CriarEnderecoDTO;
 import acessivel.entity.Queixante;
 import acessivel.service.QueixanteService;
 import jakarta.validation.Valid;
@@ -30,9 +32,24 @@ public class QueixanteController {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/get/{codigo}")
+    public ResponseEntity<?> getQueixantePorCodigo(@PathVariable Long codigo) {
+        Queixante queixante = queixanteService.getQueixantePorCodigo(codigo);
+        return new ResponseEntity<>(queixante, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/post")
-    public ResponseEntity<?> postQueixantes(@RequestBody @Valid CriarQueixanteDTO data){
+    public ResponseEntity<?> postQueixante(@RequestBody @Valid CriarQueixanteDTO data){
         Queixante queixante = queixanteService.criarQueixante(data);
         return new ResponseEntity<>(queixante, HttpStatus.CREATED);
     }
+
+    @CrossOrigin(origins = "*")
+    @PatchMapping("/patch/endereco")
+    public ResponseEntity<?> patchQueixante(@RequestBody @Valid AtualizarEnderecoQueixanteDTO data){
+        Queixante queixante = queixanteService.patchQueixanteEndereco(data);
+        return new ResponseEntity<>(queixante, HttpStatus.CREATED);
+    }
+
 }

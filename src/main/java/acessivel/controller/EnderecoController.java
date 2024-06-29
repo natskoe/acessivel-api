@@ -2,6 +2,8 @@ package acessivel.controller;
 
 import acessivel.dto.endereco.CriarEnderecoDTO;
 import acessivel.entity.Endereco;
+import acessivel.entity.Queixante;
+import acessivel.service.QueixanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

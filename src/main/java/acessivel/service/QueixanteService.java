@@ -1,6 +1,8 @@
 package acessivel.service;
 
+import acessivel.dto.queixante.AtualizarEnderecoQueixanteDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
+import acessivel.entity.Endereco;
 import acessivel.entity.Queixante;
 import acessivel.repository.QueixanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,11 @@ public class QueixanteService {
     private QueixanteRepository repository;
 
     //Retornar todos os usuários.
-    public List<Queixante> getQueixantes(){
+    public List<Queixante> getQueixantes() {
         return repository.findAll();
     }
 
+    //Criar um queixante a partir de um DTO.
     public Queixante criarQueixante(CriarQueixanteDTO data) {
         Queixante queixante = new Queixante();
 
@@ -36,5 +39,23 @@ public class QueixanteService {
     //Salvar usuário.
     public void salvarQueixante(Queixante queixante) {
         repository.save(queixante);
+    }
+
+    //Buscar um usuário por código.
+    public Queixante getQueixantePorCodigo(Long id) {
+        Queixante queixante = repository.findById(id).get();
+        return queixante;
+    }
+
+    //Vincular endereço ao queixante.
+    public Queixante patchQueixanteEndereco(AtualizarEnderecoQueixanteDTO data) {
+        Queixante queixante = repository.getReferenceById(data.getCodigo());
+
+        if (data.getEndereco() != null) {
+            queixante.setEndereco(data.getEndereco());
+        }
+
+        repository.save(queixante);
+        return queixante;
     }
 }

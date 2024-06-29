@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/governo")
 public class GovernoController {
 
-    private GovernoService governoService;
+    private final GovernoService governoService;
 
     @Autowired
     public GovernoController(GovernoService governoService) {

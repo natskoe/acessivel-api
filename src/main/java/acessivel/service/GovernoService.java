@@ -15,12 +15,12 @@ public class GovernoService {
     @Autowired
     private GovernoRepository repository;
 
-    // CRUD REST API - USUARIOS GOVERNO
-        // GET - Retornar todos os usuários
+    // GET - Retornar todos os usuários
     public List<Governo> getGoverno() {
         return repository.findAll();
     }
-        // POST - Criar um usuário
+
+    // POST - Criar um usuário governo.
     public Governo criarGoverno(CriarGovernoDTO data){
         Governo governo = new Governo();
 
@@ -35,7 +35,7 @@ public class GovernoService {
         repository.save(governo);
         return governo;
     }
-        // DELETE - Remover um usuário
+    // DELETE - Remover um usuário governo.
     public ResponseEntity<?> removerGoverno(long id){
         return repository.findById(id)
                 .map(record -> {
