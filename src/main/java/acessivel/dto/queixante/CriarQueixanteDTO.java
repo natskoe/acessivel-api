@@ -11,4 +11,5 @@ public class CriarQueixanteDTO extends CriarUsuarioDTO {
 
     private String cadPcd;
     private Endereco endereco;
+
 }
