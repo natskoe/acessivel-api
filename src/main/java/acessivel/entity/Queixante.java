@@ -1,7 +1,10 @@
 package acessivel.entity;
 
+import acessivel.roles.Role;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Entity(name = "Queixante")
@@ -24,4 +27,9 @@ public class Queixante extends Usuario {
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "queixantes_roles",
+            joinColumns = @JoinColumn(name = "id_queixante"),
+            inverseJoinColumns = @JoinColumn(name = "id_role"))
+    private List<Role> roles;
 }

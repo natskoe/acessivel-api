@@ -15,7 +15,6 @@ public class GovernoService {
     @Autowired
     private GovernoRepository repository;
 
-<<<<<<< HEAD
     // CRUD REST API - USUARIOS GOVERNO
         // GET - Retornar todos os usuários
     public List<Governo> getAllGoverno() {
@@ -26,15 +25,8 @@ public class GovernoService {
         Governo governo = repository.findById(id).get();
         return governo;
     }
-        // POST - Criar um usuário
-=======
-    // GET - Retornar todos os usuários
-    public List<Governo> getGoverno() {
-        return repository.findAll();
-    }
 
     // POST - Criar um usuário governo.
->>>>>>> c05940235e56ca2e881a0168f625d26ebd74a507
     public Governo criarGoverno(CriarGovernoDTO data){
         Governo governo = new Governo();
 
