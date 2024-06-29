@@ -14,8 +14,9 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository repository;
 
-    public void salvarEndereco(Endereco endereco){
-        repository.save(endereco);
+    public Endereco salvarEndereco(Endereco endereco){
+        Endereco enderecoSalvo = repository.save(endereco);
+        return enderecoSalvo;
     }
 
     //Retornar todos os usuários.
@@ -34,7 +35,8 @@ public class EnderecoService {
         endereco.setComplemento(data.getComplemento());
         endereco.setNumero(data.getNumero());
 
-        salvarEndereco(endereco);
-        return endereco;
+        Endereco enderecoSalvo = salvarEndereco(endereco);
+        System.out.println("Endereço salvo: " + enderecoSalvo);
+        return enderecoSalvo;
     }
 }

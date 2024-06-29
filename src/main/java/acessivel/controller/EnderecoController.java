@@ -32,10 +32,8 @@ public class EnderecoController {
     @CrossOrigin(origins = "*")
     @PostMapping("/post")
     public ResponseEntity<?> post(@RequestBody CriarEnderecoDTO data) {
-
         Endereco endereco = enderecoService.criarEndereco(data);
         return new ResponseEntity<>(endereco, HttpStatus.CREATED);
-
     }
 }
 

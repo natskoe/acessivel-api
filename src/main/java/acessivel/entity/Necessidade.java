@@ -19,7 +19,7 @@ public class Necessidade extends Solicitacao{
 
     @Id
     @Column(name = "id_necessidade")
-    private int id_necessidade;
+    private Long id_necessidade;
 
     @Column(name = "tipo")
     private String tipo;
