@@ -32,13 +32,12 @@ public class QueixanteService {
         queixante.setCadPcd(data.getCadPcd());
         queixante.setDataNascimento(data.getDataNascimento());
 
-        salvarQueixante(queixante);
-        return queixante;
+        return salvarQueixante(queixante);
     }
 
     //Salvar usuário.
-    public void salvarQueixante(Queixante queixante) {
-        repository.save(queixante);
+    public Queixante salvarQueixante(Queixante queixante) {
+        return repository.save(queixante);
     }
 
     //Buscar um usuário por código.
@@ -49,7 +48,7 @@ public class QueixanteService {
 
     //Vincular endereço ao queixante.
     public Queixante patchQueixanteEndereco(AtualizarEnderecoQueixanteDTO data) {
-        Queixante queixante = repository.getReferenceById(data.getCodigo());
+        Queixante queixante = repository.getReferenceById(data.getIdQueixante());
 
         if (data.getEndereco() != null) {
             queixante.setEndereco(data.getEndereco());

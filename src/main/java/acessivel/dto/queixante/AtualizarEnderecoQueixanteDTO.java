@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class AtualizarEnderecoQueixanteDTO {
 
-    private Long codigo;
+    private Long idQueixante;
+//    private Long idEndereco;
     private Endereco endereco;
 
 }

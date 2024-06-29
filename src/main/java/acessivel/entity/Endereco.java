@@ -1,9 +1,6 @@
 package acessivel.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -15,7 +12,8 @@ import lombok.*;
 public class Endereco {
     @Id
     @Column(name = "id_endereco")
-    private int id_endereco;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_endereco;
 
     @Column(name = "cep")
     private String cep;
@@ -37,4 +35,7 @@ public class Endereco {
 
     @Column(name = "estado")
     private String estado;
+
+    @OneToOne(mappedBy = "endereco")
+    private Queixante queixante;
 }
