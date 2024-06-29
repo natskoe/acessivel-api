@@ -17,8 +17,13 @@ public class GovernoService {
 
     // CRUD REST API - USUARIOS GOVERNO
         // GET - Retornar todos os usuários
-    public List<Governo> getGoverno() {
+    public List<Governo> getAllGoverno() {
         return repository.findAll();
+    }
+        // GET - Retornar um usuário pelo seu id
+    public Governo getGovernoPorCodigo(Long id) {
+        Governo governo = repository.findById(id).get();
+        return governo;
     }
         // POST - Criar um usuário
     public Governo criarGoverno(CriarGovernoDTO data){
