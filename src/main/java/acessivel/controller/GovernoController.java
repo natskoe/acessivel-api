@@ -24,9 +24,16 @@ public class GovernoController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/get")
-    public ResponseEntity<?> getGoverno(){
-        List<Governo> listaGoverno = governoService.getGoverno();
+    public ResponseEntity<?> getGovernos(){
+        List<Governo> listaGoverno = governoService.getAllGoverno();
         return new ResponseEntity<>(listaGoverno, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/get/{codigo}")
+    public ResponseEntity<?> getGovernoPorCodigo(@PathVariable Long codigo){
+        Governo governo = governoService.getGovernoPorCodigo(codigo);
+        return new ResponseEntity<>(governo, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = "*")
