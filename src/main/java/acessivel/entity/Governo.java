@@ -14,7 +14,7 @@ public class Governo extends Usuario{
     @Id
     @Column(name = "id_governo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_governo;
+    private Long idGoverno;
 
     @Column(name = "matricula")
     private String matricula;

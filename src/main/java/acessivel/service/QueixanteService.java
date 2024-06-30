@@ -1,5 +1,6 @@
 package acessivel.service;
 
+import acessivel.dto.queixante.AdicionarCadPcdDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Endereco;
 import acessivel.entity.Queixante;
@@ -15,6 +16,16 @@ public class QueixanteService {
 
     public QueixanteService(QueixanteRepository repository) {
         this.repository = repository;
+    }
+
+    //Salvar usuário.
+    public void salvarQueixante(Queixante queixante) {
+        repository.save(queixante);
+    }
+
+    //Buscar um usuário por código.
+    public Queixante getQueixantePorCodigo(Long id) {
+        return repository.findById(id).get();
     }
 
     //Retornar todos os usuários.
@@ -34,25 +45,26 @@ public class QueixanteService {
         queixante.setCadPcd(data.getCadPcd());
         queixante.setDataNascimento(data.getDataNascimento());
 
-        return salvarQueixante(queixante);
-    }
+        salvarQueixante(queixante);
 
-    //Salvar usuário.
-    public Queixante salvarQueixante(Queixante queixante) {
-        return repository.save(queixante);
-    }
-
-    //Buscar um usuário por código.
-    public Queixante getQueixantePorCodigo(Long id) {
-        Queixante queixante = repository.findById(id).get();
-        return queixante;
+        return getQueixantePorCodigo(queixante.getIdQueixante());
     }
 
     //Vincular endereço ao queixante.
-    public void patchQueixanteEndereco(Long id, Endereco endereco) {
-        Queixante queixante = repository.getReferenceById(id);
+    public Queixante patchQueixanteEndereco(Long id, Endereco endereco) {
+        Queixante queixante = getQueixantePorCodigo(id);
         queixante.setEndereco(endereco);
+        salvarQueixante(queixante);
 
-        repository.save(queixante);
+        return getQueixantePorCodigo(id);
+    }
+
+    //Vincular cadpcd ao queixante.
+    public Queixante patchQueixanteCadPcd(AdicionarCadPcdDTO data) {
+        Queixante queixante = getQueixantePorCodigo(data.getIdQueixante());
+        queixante.setCadPcd(data.getCadPcd());
+        salvarQueixante(queixante);
+
+        return getQueixantePorCodigo(data.getIdQueixante());
     }
 }
