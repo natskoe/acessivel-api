@@ -3,6 +3,9 @@ package acessivel.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Data
 @Entity(name = "Endereco")
 @Table(name = "endereco")
@@ -13,7 +16,7 @@ public class Endereco {
     @Id
     @Column(name = "id_endereco")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_endereco;
+    private Long idEndereco;
 
     @Column(name = "cep")
     private String cep;
@@ -36,6 +39,7 @@ public class Endereco {
     @Column(name = "estado")
     private String estado;
 
-    @OneToOne(mappedBy = "endereco")
-    private Queixante queixante;
+    @OneToMany(mappedBy = "endereco")
+    private Set<Queixante> queixantes = new LinkedHashSet<>();
+
 }

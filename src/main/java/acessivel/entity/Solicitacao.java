@@ -15,8 +15,8 @@ public class Solicitacao {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "local")
-    private String local;
+    @Column(name = "localizacao")
+    private String localizacao;
 
     @Column(name = "queixante")
     private Queixante queixante;

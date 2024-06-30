@@ -3,8 +3,11 @@ package acessivel.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 @Entity(name = "Queixante")
@@ -18,13 +21,20 @@ public class Queixante extends Usuario {
     @Id
     @Column(name = "id_queixante")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_queixante;
+    private Long idQueixante;
 
     @Column(name = "cad_pcd")
     private String cadPcd;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
+    @OneToMany(mappedBy = "queixante")
+    private Set<Necessidade> necessidades = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "queixante")
+    private Set<Queixa> queixas = new LinkedHashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "fk_endereco_id_endereco")
     private Endereco endereco;
 
 }

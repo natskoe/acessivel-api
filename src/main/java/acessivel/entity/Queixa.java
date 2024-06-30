@@ -1,14 +1,13 @@
 package acessivel.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "Queixa")
 @Table(name = "queixa")
@@ -20,8 +19,14 @@ public class Queixa extends Solicitacao {
 
     @Id
     @Column(name = "id_queixa")
-    private Long id_queixa;
+    private Long idQueixa;
 
     @Column(name = "imagem_link")
-    private String imagem_link;
+    private String imagemLink;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "fk_queixante_id_queixante")
+    private Queixante queixante;
+
 }
