@@ -32,9 +32,8 @@ public class Queixante extends Usuario {
     @OneToMany(mappedBy = "queixante")
     private Set<Queixa> queixas = new LinkedHashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "fk_endereco_id_endereco")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
 }

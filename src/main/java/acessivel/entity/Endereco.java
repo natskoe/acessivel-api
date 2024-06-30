@@ -39,7 +39,4 @@ public class Endereco {
     @Column(name = "estado")
     private String estado;
 
-    @OneToMany(mappedBy = "endereco")
-    private Set<Queixante> queixantes = new LinkedHashSet<>();
-
 }
