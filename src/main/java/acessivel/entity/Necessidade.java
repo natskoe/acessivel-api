@@ -18,6 +18,7 @@ public class Necessidade extends Solicitacao{
 
     @Id
     @Column(name = "id_necessidade")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idNecessidade;
 
     @Column(name = "tipo")
@@ -27,7 +28,6 @@ public class Necessidade extends Solicitacao{
     private Boolean cronica;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "fk_queixante_id_queixante")
     private Queixante queixante;
 }

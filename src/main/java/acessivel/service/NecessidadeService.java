@@ -48,8 +48,6 @@ public class NecessidadeService {
         necessidade.setTipo(data.getTipo());
         necessidade.setCronica(data.getCronica());
 
-
-
         Necessidade necessidadeSalva = salvarNecessidade(necessidade);
         getNecessidadePorCodigo(necessidade.getIdNecessidade());
 
