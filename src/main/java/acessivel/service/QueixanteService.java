@@ -18,7 +18,7 @@ public class QueixanteService {
         this.repository = repository;
     }
 
-    //Salvar usuário.
+    //Salvar usuário queixante.
     public void salvarQueixante(Queixante queixante) {
         repository.save(queixante);
     }
@@ -28,12 +28,12 @@ public class QueixanteService {
         return repository.findById(id).get();
     }
 
-    //Retornar todos os usuários.
+    //Retornar todos os usuários queixantes.
     public List<Queixante> getQueixantes() {
         return repository.findAll();
     }
 
-    //Criar um queixante a partir de um DTO.
+    //Criar um usuário queixante a partir de um DTO.
     public Queixante criarQueixante(CriarQueixanteDTO data) {
         Queixante queixante = new Queixante();
 
@@ -42,11 +42,9 @@ public class QueixanteService {
         queixante.setSobrenome(data.getSobrenome());
         queixante.setEmail(data.getEmail());
         queixante.setCpf(data.getCpf());
-        queixante.setCadPcd(data.getCadPcd());
         queixante.setDataNascimento(data.getDataNascimento());
 
         salvarQueixante(queixante);
-
         return getQueixantePorCodigo(queixante.getIdQueixante());
     }
 
@@ -54,8 +52,8 @@ public class QueixanteService {
     public Queixante patchQueixanteEndereco(Long id, Endereco endereco) {
         Queixante queixante = getQueixantePorCodigo(id);
         queixante.setEndereco(endereco);
-        salvarQueixante(queixante);
 
+        salvarQueixante(queixante);
         return getQueixantePorCodigo(id);
     }
 

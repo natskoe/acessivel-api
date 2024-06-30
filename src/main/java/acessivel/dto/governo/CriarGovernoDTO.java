@@ -13,4 +13,5 @@ public class CriarGovernoDTO extends CriarUsuarioDTO {
 
     @NotBlank(message = "Matrícula não pode estar vazia.")
     private String matricula;
+
 }

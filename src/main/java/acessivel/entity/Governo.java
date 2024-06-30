@@ -18,4 +18,7 @@ public class Governo extends Usuario{
 
     @Column(name = "matricula")
     private String matricula;
+
+    @Column(name="ativo")
+    private Boolean ativo;
 }

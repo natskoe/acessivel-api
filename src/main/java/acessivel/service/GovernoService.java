@@ -15,39 +15,45 @@ public class GovernoService {
     @Autowired
     private GovernoRepository repository;
 
-    // CRUD REST API - USUARIOS GOVERNO
-        // GET - Retornar todos os usuários
+    //Salvar usuário governamental.
+    public void salvarGoverno(Governo governo) {
+        repository.save(governo);
+    }
+
+    //Buscar um usuário governamental por código.
+    public Governo getGovernoPorCodigo(Long id) {return repository.findById(id).get();}
+
+    //Retornar todos os usuários governamentais.
     public List<Governo> getAllGoverno() {
         return repository.findAll();
     }
-        // GET - Retornar um usuário pelo seu id
-    public Governo getGovernoPorCodigo(Long id) {
-        Governo governo = repository.findById(id).get();
-        return governo;
-    }
 
-    // GET - Retornar todos os usuários
-    public List<Governo> getGoverno() {
-        return repository.findAll();
-    }
-
-    // POST - Criar um usuário governo.
+    //Criar um usuário governamental a partir de um DTO.
     public Governo criarGoverno(CriarGovernoDTO data){
         Governo governo = new Governo();
 
         governo.setNome(data.getNome());
         governo.setSobrenome(data.getSobrenome());
-        governo.setCpf(data.getCpf());
         governo.setEmail(data.getEmail());
         governo.setSenha(data.getSenha());
-        governo.setDataNascimento(data.getDataNascimento());
         governo.setMatricula(data.getMatricula());
+        governo.setAtivo(Boolean.FALSE);
 
-        repository.save(governo);
-        return governo;
+        salvarGoverno(governo);
+        return getGovernoPorCodigo(governo.getIdGoverno());
     }
-    // DELETE - Remover um usuário governo.
-    public ResponseEntity<?> removerGoverno(long id){
+
+    //Atualizar status de ativo ou não de um usuário governamental.
+    public Governo atualizarAtivo(Long id){
+        Governo governo = getGovernoPorCodigo(id);
+        governo.setAtivo(Boolean.TRUE);
+
+        salvarGoverno(governo);
+        return getGovernoPorCodigo(id);
+    }
+
+   //Remover um usuário governamental.
+    public ResponseEntity<?> removerGoverno(Long id){
         return repository.findById(id)
                 .map(record -> {
                     repository.deleteById(id);
