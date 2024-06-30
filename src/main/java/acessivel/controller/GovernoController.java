@@ -44,6 +44,13 @@ public class GovernoController {
     }
 
     @CrossOrigin(origins = "*")
+    @PatchMapping("/patch/ativo")
+    public ResponseEntity<?> postGoverno(@RequestBody @Valid Long id){
+        Governo governo = governoService.atualizarAtivo(id);
+        return new ResponseEntity<>(governo, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "*")
     @DeleteMapping(path = {"delete/{id}"})
     public ResponseEntity<?> deleteGoverno(@PathVariable Long id){
         return new ResponseEntity<>(governoService.removerGoverno(id), HttpStatus.OK);
