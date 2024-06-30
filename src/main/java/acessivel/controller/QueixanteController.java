@@ -1,5 +1,6 @@
 package acessivel.controller;
 
+import acessivel.dto.queixante.AdicionarCadPcdDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Queixante;
 import acessivel.service.QueixanteService;
@@ -43,11 +44,11 @@ public class QueixanteController {
         return new ResponseEntity<>(queixante, HttpStatus.CREATED);
     }
 
-//    @CrossOrigin(origins = "*")
-//    @PatchMapping("/patch/endereco")
-//    public ResponseEntity<?> patchQueixante(@RequestBody @Valid AtualizarEnderecoQueixanteDTO data){
-//        Queixante queixante = queixanteService.patchQueixanteEndereco(data);
-//        return new ResponseEntity<>(queixante, HttpStatus.CREATED);
-//    }
+    @CrossOrigin(origins = "*")
+    @PatchMapping("/patch/cadpcd")
+    public ResponseEntity<?> patchQueixante(@RequestBody @Valid AdicionarCadPcdDTO data){
+        Queixante queixante = queixanteService.patchQueixanteCadPcd(data);
+        return new ResponseEntity<>(queixante, HttpStatus.CREATED);
+    }
 
 }

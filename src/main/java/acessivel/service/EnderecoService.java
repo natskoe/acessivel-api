@@ -45,7 +45,7 @@ public class EnderecoService {
         Endereco enderecoSalvo = salvarEndereco(endereco);
         System.out.println("Endereço salvo: " + enderecoSalvo);
 
-        Long id_queixante = data.getId_queixante();
+        Long id_queixante = data.getIdQueixante();
 
         queixanteService.patchQueixanteEndereco(id_queixante, enderecoSalvo);
 
