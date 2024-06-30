@@ -24,7 +24,7 @@ public class Necessidade extends Solicitacao{
     private String tipo;
 
     @Column(name = "cronica")
-    private boolean cronica;
+    private Boolean cronica;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)

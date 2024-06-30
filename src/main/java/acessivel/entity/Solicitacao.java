@@ -2,9 +2,11 @@ package acessivel.entity;
 
 
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 
 @Data
+@MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
 public class Solicitacao {
@@ -17,9 +19,6 @@ public class Solicitacao {
 
     @Column(name = "localizacao")
     private String localizacao;
-
-    @Column(name = "queixante")
-    private Queixante queixante;
 
     @Column(name = "status")
     private boolean status;

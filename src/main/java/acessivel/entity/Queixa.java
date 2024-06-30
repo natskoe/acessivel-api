@@ -24,8 +24,7 @@ public class Queixa extends Solicitacao {
     @Column(name = "imagem_link")
     private String imagemLink;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_queixante_id_queixante")
     private Queixante queixante;
 

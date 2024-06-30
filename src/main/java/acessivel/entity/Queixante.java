@@ -26,14 +26,7 @@ public class Queixante extends Usuario {
     @Column(name = "cad_pcd")
     private String cadPcd;
 
-    @OneToMany(mappedBy = "queixante")
-    private Set<Necessidade> necessidades = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "queixante")
-    private Set<Queixa> queixas = new LinkedHashSet<>();
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_endereco_id_endereco")
     private Endereco endereco;
-
 }
