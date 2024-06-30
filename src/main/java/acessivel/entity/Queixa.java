@@ -19,12 +19,13 @@ public class Queixa extends Solicitacao {
 
     @Id
     @Column(name = "id_queixa")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idQueixa;
 
     @Column(name = "imagem_link")
     private String imagemLink;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "fk_queixante_id_queixante")
     private Queixante queixante;
 

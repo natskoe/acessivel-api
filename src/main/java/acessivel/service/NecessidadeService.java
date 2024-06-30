@@ -38,7 +38,7 @@ public class NecessidadeService {
     public Necessidade criarNecessidade(CriarNecessidadeDTO data){
         Necessidade necessidade = new Necessidade();
 
-        Queixante queixante = queixanteService.getQueixantePorCodigo(data.getId_queixante());
+        Queixante queixante = queixanteService.getQueixantePorCodigo(data.getIdQueixante());
 
         necessidade.setQueixante(queixante);
         necessidade.setTitulo(data.getTitulo());

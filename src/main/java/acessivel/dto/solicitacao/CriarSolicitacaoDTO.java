@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CriarSolicitacaoDTO {
 
-    private Long id_queixante;
+    private Long idQueixante;
 
     @NotBlank(message = "Titulo não pode estar vazio.")
     private String titulo;
