@@ -11,7 +11,7 @@ import lombok.Setter;
 public class CriarEnderecoDTO {
 
     @NotBlank(message = "ID do queixante não pode estar vazio.")
-    private Long idQueixante;
+    private Long id_queixante;
 
     @NotBlank(message = "CEP não pode estar vazio.")
     private String cep;

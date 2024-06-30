@@ -21,7 +21,7 @@ public class Queixante extends Usuario {
     @Id
     @Column(name = "id_queixante")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idQueixante;
+    private Long id_queixante;
 
     @Column(name = "cad_pcd")
     private String cadPcd;

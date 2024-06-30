@@ -19,7 +19,7 @@ public class Queixa extends Solicitacao {
 
     @Id
     @Column(name = "id_queixa")
-    private Long idQueixa;
+    private Long id_queixa;
 
     @Column(name = "imagem_link")
     private String imagemLink;
