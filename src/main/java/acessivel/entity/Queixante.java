@@ -33,7 +33,7 @@ public class Queixante extends Usuario {
     private Set<Queixa> queixas = new LinkedHashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
+    @JoinColumn(name = "fk_endereco_id_endereco")
     private Endereco endereco;
 
 }
