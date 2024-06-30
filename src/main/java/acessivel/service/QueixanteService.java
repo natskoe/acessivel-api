@@ -1,6 +1,6 @@
 package acessivel.service;
 
-import acessivel.dto.queixante.AtualizarEnderecoQueixanteDTO;
+import acessivel.dto.queixante.AdicionarCadPcdDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
 import acessivel.entity.Endereco;
 import acessivel.entity.Queixante;
@@ -12,8 +12,21 @@ import java.util.List;
 @Service
 public class QueixanteService {
 
-    @Autowired
     private QueixanteRepository repository;
+
+    public QueixanteService(QueixanteRepository repository) {
+        this.repository = repository;
+    }
+
+    //Salvar usuário.
+    public void salvarQueixante(Queixante queixante) {
+        repository.save(queixante);
+    }
+
+    //Buscar um usuário por código.
+    public Queixante getQueixantePorCodigo(Long id) {
+        return repository.findById(id).get();
+    }
 
     //Retornar todos os usuários.
     public List<Queixante> getQueixantes() {
@@ -32,29 +45,26 @@ public class QueixanteService {
         queixante.setCadPcd(data.getCadPcd());
         queixante.setDataNascimento(data.getDataNascimento());
 
-        return salvarQueixante(queixante);
-    }
+        salvarQueixante(queixante);
 
-    //Salvar usuário.
-    public Queixante salvarQueixante(Queixante queixante) {
-        return repository.save(queixante);
-    }
-
-    //Buscar um usuário por código.
-    public Queixante getQueixantePorCodigo(Long id) {
-        Queixante queixante = repository.findById(id).get();
-        return queixante;
+        return getQueixantePorCodigo(queixante.getIdQueixante());
     }
 
     //Vincular endereço ao queixante.
-    public Queixante patchQueixanteEndereco(AtualizarEnderecoQueixanteDTO data) {
-        Queixante queixante = repository.getReferenceById(data.getIdQueixante());
+    public Queixante patchQueixanteEndereco(Long id, Endereco endereco) {
+        Queixante queixante = getQueixantePorCodigo(id);
+        queixante.setEndereco(endereco);
+        salvarQueixante(queixante);
 
-        if (data.getEndereco() != null) {
-            queixante.setEndereco(data.getEndereco());
-        }
+        return getQueixantePorCodigo(id);
+    }
 
-        repository.save(queixante);
-        return queixante;
+    //Vincular cadpcd ao queixante.
+    public Queixante patchQueixanteCadPcd(AdicionarCadPcdDTO data) {
+        Queixante queixante = getQueixantePorCodigo(data.getIdQueixante());
+        queixante.setCadPcd(data.getCadPcd());
+        salvarQueixante(queixante);
+
+        return getQueixantePorCodigo(data.getIdQueixante());
     }
 }
