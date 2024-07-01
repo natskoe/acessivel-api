@@ -2,7 +2,10 @@ package acessivel.controller;
 
 import acessivel.dto.queixante.AdicionarCadPcdDTO;
 import acessivel.dto.queixante.CriarQueixanteDTO;
+import acessivel.dto.queixante.LoginQueixanteDTO;
+import acessivel.dto.queixante.LoginResponseQueixanteDTO;
 import acessivel.entity.Queixante;
+import acessivel.service.JwtService;
 import acessivel.service.QueixanteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -15,12 +18,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/queixante")
 public class QueixanteController {
-
+    private final JwtService jwtService;
     private final QueixanteService queixanteService;
 
     @Autowired
-    public QueixanteController(QueixanteService queixanteService) {
+    public QueixanteController(QueixanteService queixanteService, JwtService jwtService) {
         this.queixanteService = queixanteService;
+        this.jwtService = jwtService;
+    }
+
+    @PostMapping("/auth/login")
+    public ResponseEntity<LoginResponseQueixanteDTO> autenticar(@RequestBody LoginQueixanteDTO data){
+        Queixante queixante = queixanteService.autenticar(data);
+        String jwtToken = jwtService.gerarToken(queixante);
+        LoginResponseQueixanteDTO response = new LoginResponseQueixanteDTO();
+        response.setToken(jwtToken);
+        response.setExpiresIn(jwtService.pegarTempoExpiracao());
+        return ResponseEntity.ok(response);
     }
 
     @CrossOrigin(origins = "*")
@@ -38,7 +52,7 @@ public class QueixanteController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/post")
+    @PostMapping("/auth/post")
     public ResponseEntity<?> postQueixante(@RequestBody @Valid CriarQueixanteDTO data){
         Queixante queixante = queixanteService.criarQueixante(data);
         return new ResponseEntity<>(queixante, HttpStatus.CREATED);

@@ -36,7 +36,7 @@ public class GovernoService {
         governo.setNome(data.getNome());
         governo.setSobrenome(data.getSobrenome());
         governo.setEmail(data.getEmail());
-        governo.setSenha("");
+        governo.setPassword("");
         governo.setMatricula(data.getMatricula());
         governo.setAtivo(Boolean.FALSE);
         governo.setCpf(data.getCpf());
@@ -50,7 +50,7 @@ public class GovernoService {
     public Governo atualizarAtivo(AtualizarGovernoDTO data){
         Governo governo = getGovernoPorCodigo(data.getIdGoverno());
         governo.setAtivo(Boolean.TRUE);
-        governo.setSenha(data.getSenha());
+        governo.setPassword(data.getSenha());
 
         salvarGoverno(governo);
         return getGovernoPorCodigo(data.getIdGoverno());

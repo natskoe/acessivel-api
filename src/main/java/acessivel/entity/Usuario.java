@@ -26,7 +26,7 @@ public class Usuario {
     private String email;
 
     @Column(name = "senha")
-    private String senha;
+    private String password;
 
     @Column(name = "data_nascimento")
     @Basic
