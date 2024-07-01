@@ -50,9 +50,5 @@ public class GovernoController {
         return new ResponseEntity<>(governo, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "*")
-    @DeleteMapping(path = {"delete/{id}"})
-    public ResponseEntity<?> deleteGoverno(@PathVariable Long id){
-        return new ResponseEntity<>(governoService.removerGoverno(id), HttpStatus.OK);
-    }
+
 }

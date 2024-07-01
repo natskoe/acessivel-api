@@ -51,13 +51,4 @@ public class GovernoService {
         salvarGoverno(governo);
         return getGovernoPorCodigo(id);
     }
-
-   //Remover um usuário governamental.
-    public ResponseEntity<?> removerGoverno(Long id){
-        return repository.findById(id)
-                .map(record -> {
-                    repository.deleteById(id);
-                    return ResponseEntity.ok().build();
-                }).orElse(ResponseEntity.notFound().build());
-    }
 }

@@ -27,7 +27,7 @@ public class Necessidade extends Solicitacao{
     @Column(name = "cronica")
     private Boolean cronica;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "fk_queixante_id_queixante")
     private Queixante queixante;
 }

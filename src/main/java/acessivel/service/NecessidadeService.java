@@ -2,6 +2,7 @@ package acessivel.service;
 
 import acessivel.dto.necessidade.CriarNecessidadeDTO;
 import acessivel.entity.Necessidade;
+import acessivel.entity.Queixa;
 import acessivel.entity.Queixante;
 import acessivel.repository.NecessidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,7 @@ public class NecessidadeService {
 
     //Salvar necessidade.
     public Necessidade salvarNecessidade(Necessidade necessidade){
-        Necessidade necessidadeSalvo = repository.save(necessidade);
-        return necessidadeSalvo;
+        return repository.save(necessidade);
     }
 
     //Buscar uma necessidade por código.
@@ -35,6 +35,14 @@ public class NecessidadeService {
         return repository.findAll();
     }
 
+    //Retornar todas as necessidades de um queixante.
+    public List<Necessidade> getNecessidadesPorQueixante(Long idQueixante) {
+        Queixante queixante = queixanteService.getQueixantePorCodigo(idQueixante);
+
+        return repository.findAllbyQueixante(queixante);
+    }
+
+    //Criar uma necessidade a partir de um DTO.
     public Necessidade criarNecessidade(CriarNecessidadeDTO data){
         Necessidade necessidade = new Necessidade();
 

@@ -23,8 +23,8 @@ public class QueixaController {
     @CrossOrigin("*")
     @GetMapping("/get")
     public ResponseEntity<?> getQueixas(){
-        List<Queixa> listaQueixas = queixaService.getQueixas();
-        return new ResponseEntity<>(listaQueixas, HttpStatus.OK);
+        List<Queixa> queixas = queixaService.getQueixas();
+        return new ResponseEntity<>(queixas, HttpStatus.OK);
     }
 
     @CrossOrigin("*")
@@ -36,8 +36,8 @@ public class QueixaController {
 
     @CrossOrigin("*")
     @GetMapping("/get/queixante/{id}")
-    public ResponseEntity<?> getQueixasQueixante(@PathVariable Long id){
-        List<Queixa> listaQueixas = queixaService.getQueixasDeQueixante(id);
+    public ResponseEntity<?> getQueixasporQueixante(@PathVariable Long id){
+        List<Queixa> listaQueixas = queixaService.getQueixasPorQueixante(id);
         return new ResponseEntity<>(listaQueixas, HttpStatus.OK);
     }
 

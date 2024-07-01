@@ -19,30 +19,29 @@ public class QueixaService {
         this.queixanteService = queixanteService;
     }
 
-    // Salvar Queixa
+    //Salvar Queixa.
     public Queixa salvarQueixa(Queixa queixa){
-        Queixa queixaSalva = repository.save(queixa);
-        return queixaSalva;
+        return repository.save(queixa);
     }
 
-    // Retornar Queixa por Codigo
+    //Retornar Queixa por código.
     public Queixa getQueixaPorCodigo(Long codigo){
         return repository.findById(codigo).get();
     }
 
-    // Retornar todas as Queixas
+    //Retornar todas as queixas.
     public List<Queixa> getQueixas(){
         return repository.findAll();
     }
 
-    // Retornar todas as Queixas de um Queixante
-    public List<Queixa> getQueixasDeQueixante(Long idQueixante){
+    //Retornar todas as queixas de um Queixante.
+    public List<Queixa> getQueixasPorQueixante(Long idQueixante){
         Queixante queixante = queixanteService.getQueixantePorCodigo(idQueixante);
-        List<Queixa> listaQueixas = repository.findAllByQueixante(queixante);
-        return listaQueixas;
+
+        return repository.findAllByQueixante(queixante);
     }
 
-    // Criar queixa a partir de um DTO
+    //Criar queixa a partir de um DTO.
     public Queixa criarQueixa(CriarQueixaDTO data){
         Queixa queixa = new Queixa();
 
@@ -59,9 +58,6 @@ public class QueixaService {
         Queixa queixaSalva = salvarQueixa(queixa);
         getQueixaPorCodigo(queixa.getIdQueixa());
 
-
         return queixaSalva;
     }
-
-    // Remover queixa de um usuário
 }
