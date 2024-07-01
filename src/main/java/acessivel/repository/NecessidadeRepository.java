@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface NecessidadeRepository extends JpaRepository<Necessidade, Long> {
-    List<Necessidade> findAllbyQueixante(Queixante queixante);
+    List<Necessidade> findAllByQueixante(Queixante queixante);
 }

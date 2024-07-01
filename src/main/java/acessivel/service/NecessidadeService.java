@@ -39,7 +39,7 @@ public class NecessidadeService {
     public List<Necessidade> getNecessidadesPorQueixante(Long idQueixante) {
         Queixante queixante = queixanteService.getQueixantePorCodigo(idQueixante);
 
-        return repository.findAllbyQueixante(queixante);
+        return repository.findAllByQueixante(queixante);
     }
 
     //Criar uma necessidade a partir de um DTO.

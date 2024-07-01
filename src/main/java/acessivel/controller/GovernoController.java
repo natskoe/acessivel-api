@@ -1,5 +1,6 @@
 package acessivel.controller;
 
+import acessivel.dto.governo.AtualizarGovernoDTO;
 import acessivel.dto.governo.CriarGovernoDTO;
 import acessivel.entity.Governo;
 import acessivel.service.GovernoService;
@@ -44,9 +45,9 @@ public class GovernoController {
     }
 
     @CrossOrigin(origins = "*")
-    @PatchMapping("/patch/ativo")
-    public ResponseEntity<?> postGoverno(@RequestBody @Valid Long id){
-        Governo governo = governoService.atualizarAtivo(id);
+    @PatchMapping("/patch")
+    public ResponseEntity<?> postGoverno(@RequestBody @Valid AtualizarGovernoDTO data){
+        Governo governo = governoService.atualizarAtivo(data);
         return new ResponseEntity<>(governo, HttpStatus.OK);
     }
 

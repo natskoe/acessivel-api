@@ -36,9 +36,9 @@ public class NecessidadeController {
     }
 
     @CrossOrigin("*")
-    @GetMapping("/get/queixante/{id}")
-    public ResponseEntity<?> getNecessidadesPorQueixante(@PathVariable Long id){
-        List<Necessidade> listaNecessidades = necessidadeService.getNecessidadesPorQueixante(id);
+    @GetMapping("/get/queixante/{codigo}")
+    public ResponseEntity<?> getNecessidadesPorQueixante(@PathVariable Long codigo){
+        List<Necessidade> listaNecessidades = necessidadeService.getNecessidadesPorQueixante(codigo);
         return new ResponseEntity<>(listaNecessidades, HttpStatus.OK);
     }
 

@@ -1,5 +1,6 @@
 package acessivel.service;
 
+import acessivel.dto.governo.AtualizarGovernoDTO;
 import acessivel.dto.governo.CriarGovernoDTO;
 import acessivel.entity.Governo;
 import acessivel.repository.GovernoRepository;
@@ -35,20 +36,23 @@ public class GovernoService {
         governo.setNome(data.getNome());
         governo.setSobrenome(data.getSobrenome());
         governo.setEmail(data.getEmail());
-        governo.setSenha(data.getSenha());
+        governo.setSenha("");
         governo.setMatricula(data.getMatricula());
         governo.setAtivo(Boolean.FALSE);
+        governo.setCpf(data.getCpf());
+        governo.setDataNascimento(data.getDataNascimento());
 
         salvarGoverno(governo);
         return getGovernoPorCodigo(governo.getIdGoverno());
     }
 
     //Atualizar status de ativo ou não de um usuário governamental.
-    public Governo atualizarAtivo(Long id){
-        Governo governo = getGovernoPorCodigo(id);
+    public Governo atualizarAtivo(AtualizarGovernoDTO data){
+        Governo governo = getGovernoPorCodigo(data.getIdGoverno());
         governo.setAtivo(Boolean.TRUE);
+        governo.setSenha(data.getSenha());
 
         salvarGoverno(governo);
-        return getGovernoPorCodigo(id);
+        return getGovernoPorCodigo(data.getIdGoverno());
     }
 }

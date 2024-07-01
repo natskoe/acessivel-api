@@ -15,12 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CriarQueixanteDTO extends CriarUsuarioDTO {
 
-    @NotBlank
-    @CPF
-    private String cpf;
-
-    @Basic
-    @Temporal(TemporalType.DATE)
-    private LocalDate dataNascimento;
+    @NotBlank(message = "Senha não pode estar vazio.")
+    private String senha;
 
 }
