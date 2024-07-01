@@ -46,7 +46,7 @@ public class QueixanteService {
 
     //Buscar um usuário por código.
     public Queixante getQueixantePorCodigo(Long id) {
-        return repository.findById(id).get();
+        return repository.findById(id).orElseGet(null);
     }
 
     //Retornar todos os usuários queixantes.
