@@ -34,6 +34,7 @@ public class QueixanteController {
         LoginResponseQueixanteDTO response = new LoginResponseQueixanteDTO();
         response.setToken(jwtToken);
         response.setExpiresIn(jwtService.pegarTempoExpiracao());
+        response.setQueixante(queixante); // isso deve ta errado
         return ResponseEntity.ok(response);
     }
 

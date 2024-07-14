@@ -2,8 +2,12 @@ package acessivel.controller;
 
 import acessivel.dto.governo.AtualizarGovernoDTO;
 import acessivel.dto.governo.CriarGovernoDTO;
+import acessivel.dto.queixante.LoginQueixanteDTO;
+import acessivel.dto.queixante.LoginResponseQueixanteDTO;
 import acessivel.entity.Governo;
+import acessivel.entity.Queixante;
 import acessivel.service.GovernoService;
+import acessivel.service.JwtService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +20,23 @@ import java.util.List;
 @RequestMapping("/governo")
 public class GovernoController {
 
+    private final JwtService jwtService;
     private final GovernoService governoService;
 
     @Autowired
-    public GovernoController(GovernoService governoService) {
+    public GovernoController(GovernoService governoService, JwtService jwtService) {
         this.governoService = governoService;
+        this.jwtService = jwtService;
+    }
+
+    @PostMapping("/auth/login")
+    public ResponseEntity<LoginResponseQueixanteDTO> autenticar(@RequestBody LoginQueixanteDTO data){
+        Governo governo = governoService.autenticar(data);
+        String jwtToken = jwtService.gerarToken(governo);
+        LoginResponseQueixanteDTO response = new LoginResponseQueixanteDTO();
+        response.setToken(jwtToken);
+        response.setExpiresIn(jwtService.pegarTempoExpiracao());
+        return ResponseEntity.ok(response);
     }
 
     @CrossOrigin(origins = "*")
@@ -38,7 +54,7 @@ public class GovernoController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/post")
+    @PostMapping("/auth/post")
     public ResponseEntity<?> postGoverno(@RequestBody @Valid CriarGovernoDTO data){
         Governo governo = governoService.criarGoverno(data);
         return new ResponseEntity<>(governo, HttpStatus.CREATED);
